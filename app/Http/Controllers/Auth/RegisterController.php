@@ -53,6 +53,9 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'phone' => 'required',
+            'address' => 'required',
+            'username' => 'required|unique:users'
         ]);
     }
 
@@ -68,6 +71,16 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'phone' => $data['phone'],
+            'address' => $data['address'],
+            'username' => $data['username']
         ]);
     }
+
+    /*public function showRegistrationForm(Req $request)
+    {
+        $name = $request->input('name');
+        $email = $request->input('email');
+        return view('auth.register')->with(compact('name', 'email'));
+    }*/
 }

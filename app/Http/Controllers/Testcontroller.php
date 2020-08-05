@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Category;
 
 class Testcontroller extends Controller
 {
     public function welcome()
     {
-        return view('welcome');    
+        $categories = Category::has('products')->get();
+    	return view('welcome')->with(compact('categories')); 
     }
 }

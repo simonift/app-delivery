@@ -1,100 +1,200 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <title>Laravel</title>
+@section('title', 'Bienvenido ' . config('app.name'))
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+@section('body-class', 'landing-page')
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
+@section('styles')
+<style>
+        .team .row .col-md-4 {
+            margin-bottom: 5em;
+        }
+        .team .row {
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display:         flex;
+          flex-wrap: wrap;
+        }
+        .team .row > [class*='col-'] {
+          display: flex;
+          flex-direction: column;
+        }
 
-            .full-height {
-                height: 100vh;
-            }
+        .tt-query {
+          -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+             -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+                  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        }
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+        .tt-hint {
+          color: #999
+        }
 
-            .position-ref {
-                position: relative;
-            }
+        .tt-menu {    /* used to be tt-dropdown-menu in older versions */
+          width: 222px;
+          margin-top: 4px;
+          padding: 4px 0;
+          background-color: #fff;
+          border: 1px solid #ccc;
+          border: 1px solid rgba(0, 0, 0, 0.2);
+          -webkit-border-radius: 4px;
+             -moz-border-radius: 4px;
+                  border-radius: 4px;
+          -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+             -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+                  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+        }
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+        .tt-suggestion {
+          padding: 3px 20px;
+          line-height: 24px;
+        }
 
-            .content {
-                text-align: center;
-            }
+        .tt-suggestion.tt-cursor,.tt-suggestion:hover {
+          color: #fff;
+          background-color: #0097cf;
 
-            .title {
-                font-size: 84px;
-            }
+        }
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
+        .tt-suggestion p {
+          margin: 0;
+        }
+    </style>
+@endsection
 
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
+@section('content')
+<div class="page-header header-filter" data-parallax="true" style="background-image: url('{{ asset('img/profile_city.jpg') }}')">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10">
+          <h1 class="title">Bienvenido a Deliverits!</h1>
+          <h4>Realiza tus pedidos en linea, disfruta de un pedido rápido y delicioso en casa!</h4>
+          {{--<br />--}}
+          <a href="#" target="_blank" class="btn btn-danger btn-raised btn-lg">
+            <i class="fa fa-play"></i> ¿Cómo funciona?
+          </a>
         </div>
-    </body>
-</html>
+      </div>
+    </div>
+  </div>
+
+  <div class="main main-raised">
+    <div class="container">
+      <div class="section text-center">
+        {{--<div class="row">--}}
+          {{--<div class="col-md-8 ml-auto mr-auto">--}}
+            <h2 class="title"> ¿Por qué Deliverits? </h2>
+            <h5 class="description">Puedes revisar nuestra relación completa de productos, comparar precios y realizar tus pedidos cuando estés seguro.</h5>
+          {{--</div>--}}
+        {{--</div>--}}
+
+        <div class="features">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="info">
+                <div class="icon icon-info">
+                  <i class="material-icons">chat</i>
+                </div>
+                <h4 class="info-title">Atendemos tus dudas</h4>
+                <p>Atendemos rápidamente cualquier consulta que tengas vía chat. No estás sólo, sino que siempre estamos atentos a tus inquietudes.</p>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="info">
+                <div class="icon icon-success">
+                  <i class="material-icons">verified_user</i>
+                </div>
+                <h4 class="info-title">Pago seguro</h4>
+                <p>Todo pedido que realices será confirmado a través de una llamada. Si no confías en los pagos en linea puedes pagar contra entrega el valor total de tu pedido.</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="info">
+                <div class="icon icon-danger">
+                  <i class="material-icons">fingerprint</i>
+                </div>
+                <h4 class="info-title">Información privada</h4>
+                <p>Los pedidos que realices sólo los conocerás tú a través de tu panel de usuario. Nadie más tiene acceso a esta información.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="section text-center">
+        <h2 class="title">Nuestros Productos</h2>
+
+        <form class="form-inline" method="get" action="{{ url('/search') }}">
+            <input type="text-center" placeholder="¿Qué buscas?" class="form-control" name="query" id="search">
+            <button class="btn btn-primary btn-just-icon" type="submit">
+                <i class="material-icons">search</i>
+            </button>
+        </form>
+
+        <div class="team">
+          <div class="row">
+            @foreach ($categories as $category)
+            <div class="col-md-4">
+              <div class="team-player">
+                <div class="card card-plain">
+                  <div class="col-md-8 ml-auto mr-auto">
+                    <img src="{{ $category->featured_image_url }}" alt="Imagen representativa de la categoría {{ $category->name }}" class="img-raised rounded-circle img-fluid">
+                  </div>
+                  <a href="{{ url('/categories/'.$category->id) }}">{{ $category->name }}</a>
+                    <br>
+                    <small class="card-description text-muted">{{ $category->name }}</small>
+                  </h4>
+                  <div class="card-body">
+                    <p class="card-description">{{ $category->description }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            @endforeach
+          </div>
+        </div>
+      </div>
+      <div class="section section-contacts">
+        <div class="row">
+          <div class="col-md-8 ml-auto mr-auto">
+            <h2 class="text-center title">¿Quieres que tu restaurante, o algún otro, cuente con nuestro servicio de delivery? </h2>
+            <h4 class="text-center description">Por favor, bríndanos los siguientes datos sobre el restaurante y nos pondremos en contacto lo antes posible.</h4>
+            <form class="contact-form">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Nombre</label>
+                    <input type="email" class="form-control">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Correo Electrónico</label>
+                    <input type="email" class="form-control">
+                  </div>
+                </div>
+              </div>
+              
+              {{--<div class="form-group">--}}
+                {{--<label for="exampleMessage" class="bmd-label-floating">Tu mensaje</label>––}}
+                {{––<textarea type="email" class="form-control" rows="4" id="exampleMessage"></textarea>––}}
+              {{--</div>--}}
+
+              <div class="row">
+                <div class="col-md-4 ml-auto mr-auto text-center">
+                  <button class="btn btn-primary btn-raised">
+                    Enviar Consulta
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  @include('includes.footer')
+@endsection
