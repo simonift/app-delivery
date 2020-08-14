@@ -35,7 +35,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    // Nos devuelve todos los carritos asociados al usuario (Incluyendo pedido)
+    // Relación carritos asociados al usuario (Incluyendo pedido)
     public function carts(){
         return $this->hasMany(Cart::class);
     }

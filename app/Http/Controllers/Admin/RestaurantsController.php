@@ -12,13 +12,15 @@ class RestaurantsController extends Controller
 {
 	public function index()
     {
-    	$restaurants = Restaurants::orderBy('name')->paginate(10);
-    	return view('admin.restaurants.index')->with(compact('restaurants')); // listado
+    	$restaurants = Restaurants::all();
+        return view('admin.restaurants.index')->with(compact('restaurants')); // listado
+
     }
 
     public function create()
     {
-    	return view('admin.restaurants.create'); // formulario de registro
+        $restaurants = Restaurants::orderBy('name')->get();
+    	return view('admin.restaurants.create')->with(compact('restaurants')); // formulario de registro
     }
 
     public function store(Request $request)
@@ -27,16 +29,23 @@ class RestaurantsController extends Controller
         $messages = [
             'name.required' => 'Es necesario ingresar un nombre para el restaurant.',
             'name.min' => 'El nombre del restaurant debe tener al menos 3 caracteres.',
-            'description.max' => 'La descripción solo admite hasta 250 caracteres.',
+            //'description.max' => 'La descripción solo admite hasta 250 caracteres.',
         ];
         $rules = [
             'name' => 'required|min:3',
-            'description' => 'required|max:250',
+            //'description' => 'required|max:250',
         ];
-        $this->validate($request, Restaurants::$rules, Restaurants::$messages);
+        $this->validate($request, $rules, $messages);
 
         //registrar en la bd
-        Restaurants::create($request->all()); //
+        $restaurants = new Restaurants();
+        $restaurants->name = $request->input('name');
+        $restaurants->first_comment = $request->input('first_comment');
+        $restaurants->second_comment = $request->input('second_comment');
+        $restaurants->slogan = $request->input('slogan');
+        $restaurants->contact = $request->input('contact');
+        $restaurants->phone = $request->input('phone');
+        $restaurants->save(); // inserción de producto
 
         return redirect('/admin/restaurants');
     }
@@ -60,4 +69,5 @@ class RestaurantsController extends Controller
         $restaurants->delete(); // DELETE
         return back();
     }
+    
 }

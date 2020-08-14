@@ -164,7 +164,7 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label class="bmd-label-floating">Nombre</label>
-                    <input type="email" class="form-control">
+                    <input type="name" class="form-control">
                   </div>
                 </div>
                 <div class="col-md-6">

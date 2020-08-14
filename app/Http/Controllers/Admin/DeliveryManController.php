@@ -25,7 +25,7 @@ class DeliveryManController extends Controller
     public function store(Request $request)
     {
         // validar
-        $messages = [
+        /*$messages = [
             'name.required' => 'Es necesario ingresar un nombre para el repartidor.',
             'name.min' => 'El nombre del repartidor debe tener al menos 3 caracteres.',
             'description.max' => 'La descripción solo admite hasta 200 caracteres.',
@@ -47,19 +47,19 @@ class DeliveryManController extends Controller
         $product->restaurants_id = $request->restaurants_id == 0 ? null : $request->restaurants_id; //
         $product->save(); // Insert en la tabla 
 
-        return redirect('/admin/delivery_men'); //Se redirige a la ruta definida
+        return redirect('/admin/delivery_men'); //Se redirige a la ruta definida*/
     }
 
     public function edit($id)
     {
-        $restaurants = Restaurants::orderBy('name')->get();
+        /*$restaurants = Restaurants::orderBy('name')->get();
         $delivery_men = DeliveryMan::find($id);
-        return view('admin.delivery_men.edit')->with(compact('delivery_men', 'restaurants')); // form de edición
+        return view('admin.delivery_men.edit')->with(compact('delivery_men', 'restaurants')); // form de edición*/
     }
 
     public function update(Request $request, $id)
     {
-        $messages = [
+        /*$messages = [
             'name.required' => 'Es necesario ingresar un nombre para el repartidor.',
             'name.min' => 'El nombre del repartidor debe tener al menos 3 caracteres.',
             'description.max' => 'La descripción solo admite hasta 200 caracteres.',
@@ -80,16 +80,16 @@ class DeliveryManController extends Controller
         $delivery_men->restaurants_id = $request->restaurants_id == 0 ? null : $request->restaurants_id;
         $delivery_men->save(); // UPDATE
 
-        return redirect('/admin/delivery_men');
+        return redirect('/admin/delivery_men');*/
     }
 
     public function destroy($id)
     {
 
-        $delivery_men = DeliveryMan::find($id);
+        /*$delivery_men = DeliveryMan::find($id);
         $delivery_men->delete(); // DELETE
 
-        return back();
+        return back();*/
     }
 
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDeliveryMenTable extends Migration
+class CreateDeliveryManTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateDeliveryMenTable extends Migration
      */
     public function up()
     {
-        Schema::create('delivery_men', function (Blueprint $table) {
-            $table->id();
+        Schema::create('delivery_man', function (Blueprint $table) {
+            $table->increments('id');
 
             $table->string('rut');
             $table->string('name');
             $table->string('description')->nullable();
-            $table->float('phone');
+            $table->string('phone');
 
             $table->integer('restaurants_id')->unsigned();
             $table->foreign('restaurants_id')->references('id')->on('restaurants');
@@ -35,6 +35,6 @@ class CreateDeliveryMenTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('delivery_men');
+        Schema::dropIfExists('delivery_man');
     }
 }

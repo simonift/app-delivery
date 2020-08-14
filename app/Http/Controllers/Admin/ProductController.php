@@ -10,12 +10,13 @@ use App\ProductImage;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
+use App\Restaurants;
 
 class ProductController extends Controller
 {
     public function index()
     {
-    	$products = Product::paginate(10);
+    	$products = Product::orderBy('name')->paginate(10);
     	return view('admin.products.index')->with(compact('products')); // listado
     }
 

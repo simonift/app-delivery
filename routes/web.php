@@ -38,5 +38,23 @@ Route::middleware(['auth'],['admin'])->prefix('admin')->namespace('Admin')->grou
         
 	Route::get('/categories/{category}/edit', 'CategoryController@edit'); // formulario edición de Categorías
 	Route::post('/categories/{category}/edit', 'CategoryController@update'); // actualización de Categorías en BD
-	Route::delete('/categories/{category}', 'CategoryController@destroy'); // formulario eliminación de Categorías
+        Route::delete('/categories/{category}', 'CategoryController@destroy'); // formulario eliminación de Categorías
+        
+        // Rutas para Restaurants
+        Route::get('/restaurants', 'RestaurantsController@index'); // listado de restaurantes
+        Route::get('/restaurants/create', 'RestaurantsController@create'); // formulario de restaurantes
+        Route::post('/restaurants', 'RestaurantsController@store'); // registro de restaurantes
+        
+        Route::get('/restaurants/{restaurants}/edit', 'RestaurantsController@edit'); // formulario edición de restaurantes
+        Route::post('/restaurants/{restaurants}/edit', 'RestaurantsController@update'); // actualiza restaurantes
+        Route::delete('/restaurants/{restaurants}', 'RestaurantsController@destroy'); // form eliminación de restaurantes
+
+        // Rutas para Repartidores
+        Route::get('/delivery_man','DeliveryManController@index'); // listado de repartidores
+        Route::get('/delivery_man/create','DeliveryManController@create'); // formulario de repartidores
+        Route::post('/delivery_man','DeliveryManController@store'); // registro de repartidores
+        
+        Route::get('delivery_man/{id}/edit','DeliveryManController@edit'); // formulario edicion de repartidores
+        Route::post('delivery_man/{id}/edit','DeliveryManController@update'); // actualiza repartidores
+        Route::delete('delivery_man/{id}','DeliveryManController@destroy'); // formulario eliminación repartidores
 });

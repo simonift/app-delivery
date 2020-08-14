@@ -31,7 +31,7 @@ class ImageController extends Controller
             $productImage->image = $fileName;
             //$productImage->featured = ; 
             $productImage->product_id = $id;
-            $productImage->save(); //INSERT
+            $productImage->save(); //Inserción imagen
         }
 
 

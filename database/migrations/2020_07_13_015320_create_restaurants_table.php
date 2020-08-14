@@ -21,7 +21,7 @@ class CreateRestaurantsTable extends Migration
             $table->string('second_comment')->nullable();
             $table->string('slogan');
             $table->string('contact');
-            $table->float('phone');
+            $table->string('phone');
 
             $table->timestamps();
         });

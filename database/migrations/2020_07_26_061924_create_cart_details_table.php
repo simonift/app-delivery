@@ -16,6 +16,9 @@ class CreateCartDetailsTable extends Migration
         Schema::create('cart_details', function (Blueprint $table) {
             $table->increments('id');
 
+            $table->integer('restaurants_id')->unsigned();
+            $table->foreign('restaurants_id')->references('id')->on('restaurants');
+
             $table->integer('cart_id')->unsigned()->nullable();
             $table->foreign('cart_id')->references('id')->on('carts');
 
@@ -24,6 +27,8 @@ class CreateCartDetailsTable extends Migration
 
             $table->integer('quantity');
             $table->integer('discount')->default(0); // % int
+
+
 
             $table->timestamps();
         });

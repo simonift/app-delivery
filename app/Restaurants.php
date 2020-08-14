@@ -6,22 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class Restaurants extends Model
 {
-    protected $fillable = ['name', 'description'];
-    
-    
+    protected $fillable = ['name'];
 
     public static $messages = [
         'name.required' => 'Es necesario ingresar un nombre para el restaurant.',
         'name.min' => 'El nombre del restaurant debe tener al menos 3 caracteres.',
-        'description.max' => 'La descripción corta solo admite hasta 250 caracteres.'
     ];
     public static $rules = [
         'name' => 'required|min:3',
-        'description' => 'max:250'
     ];
     
-    public function delivery_men(){
-        return $this->hasMany(DeliveryMen::class);
+    // Un Producto tiene muchos repartidores
+    public function deliveryman(){
+        return $this->hasMany(DeliveryMan::class);
     }
+    // Un Restaurant tiene muchas categorias
+    /*public function category(){
+        return $this->hasMany(Category::class);
+    }*/
 
 }

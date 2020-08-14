@@ -24,6 +24,11 @@ class Category extends Model
     public function products(){
         return $this->hasMany(Product::class);
     }
+    // Una categoría pertenece a un restaurant
+    /*public function restaurants(){
+        return $this->hasMany(Restaurants::class);
+    }*/
+
     // Muestra imagen de categoría
     public function getFeaturedImageUrlAttribute()
     {
