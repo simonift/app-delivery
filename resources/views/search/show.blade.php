@@ -27,27 +27,28 @@
 @endsection
 
 @section('content')
-<div class="header header-filter" style="background-image: url('{{ asset('img/city.jpg') }}');"></div>
+<div class="page-header header-filter" data-parallax="true" style="background-image: url('{{ asset('/img/city-profile.jpg') }}')"></div>
 
 <div class="main main-raised">
     <div class="profile-content">
         <div class="container">
             <div class="row">
-                <div class="profile">
-                    <div class="avatar">
-                        <img src="/img/search.png" alt="Imagen de una lupa que representa a la página de resultados" class="img-circle img-responsive img-raised">
-                    </div>
-
-                    <div class="name">
-                        <h3 class="title">Resultados de búsqueda</h3>
-                    </div>
-
-                    
-                    @if (session('notification'))
-                        <div class="alert alert-success">
-                            {{ session('notification') }}
+                <div class="col-md-4 ml-auto mr-auto">
+                    <div class="profile">
+                        <div class="avatar">
+                            <img src="/img/search.png" alt="Imagen de una lupa que representa a la página de resultados" class="img-raised rounded-circle img-fluid">
                         </div>
-                    @endif
+
+                        <div class="name">
+                            <h3 class="title">Resultados de búsqueda</h3>
+                        </div>
+                        
+                        @if (session('notification'))
+                            <div class="alert alert-success">
+                                {{ session('notification') }}
+                            </div>
+                        @endif
+                    </div>
                 </div>
             </div>
             <div class="description text-center">

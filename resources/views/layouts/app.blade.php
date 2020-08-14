@@ -60,11 +60,11 @@ The above copyright notice and this permission notice shall be included in all c
             @else
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }} <span class="caret"></span>
+                        Hola {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ url('home') }}">Dashboard</a>
+                        <a class="dropdown-item" href="{{ url('home') }}">Carrito de Compras</a>
                         @if (auth()->user()->admin)
 
                         <a class="dropdown-item" href="{{ url('/admin/categories') }}">Gestionar Categorías</a>
@@ -121,6 +121,7 @@ The above copyright notice and this permission notice shall be included in all c
     <!--  Google Maps Plugin    -->
     <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
     <script src="{{ asset('/js/material-kit.js?v=2.0.7')}}" type="text/javascript"></script>
+    @yield('scripts')
 
 </html>
 

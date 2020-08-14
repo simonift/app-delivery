@@ -8,13 +8,22 @@
       <div class="row">
         <div class="col-lg-4 col-md-6 ml-auto mr-auto">
           <div class="card card-login">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <form class="form" method="POST" action="{{ route('register') }}">
               @csrf
               
               <div class="card-header card-header-primary text-center">
                 <h4 class="card-title">Registro</h4>
                 <!--
-                <div class="social-line">
+                <div class="social-´line">
 
                   <a href="#pablo" class="btn btn-just-icon btn-link">
                     <i class="fa fa-facebook-square"></i>
@@ -40,7 +49,7 @@
                       <i class="material-icons">face</i>
                     </span>
                   </div>
-                  <input type="text" class="form-control" placeholder="Nombre" name="name" value="{{ old('name') }}" required autofocus>
+                  <input type="text" class="form-control" placeholder="Nombre" name="name" value="{{ old('name', $name) }}" required autofocus>
                 </div>
 
                 <div class="input-group">
@@ -49,7 +58,7 @@
                         <i class="material-icons">fingerprint</i>
                     </span>
                   </div> 
-                  <input type="text" class="form-control" placeholder="Username" name="username" value="{{ old('username') }}" required autofocus>
+                  <input type="text" class="form-control" placeholder="Username" name="username" value="{{ old('username') }}" required>
                   </div> 
                 
                 <div class="input-group">
@@ -58,7 +67,7 @@
                       <i class="material-icons">mail</i>
                     </span>
                   </div>
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Correo electrónico..." name="email" value="{{ old('email') }}" required autofocus>
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Correo electrónico..." name="email" value="{{ old('email', $email) }}" required autofocus>
                 </div>
 
                 <div class="input-group">

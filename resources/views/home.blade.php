@@ -61,9 +61,9 @@
                                 <form method="post" action="{{ url('/cart') }}">
                                 @csrf
                                 @method('DELETE')
-                                <input type="hidden" nem="cart_detail_id" value="{{ $detail->id }}">
+                                <input type="hidden" name="cart_detail_id" value="{{ $detail->id }}">
 
-                                <a type="{{ url('products/'.$detail->product->id) }}" target="_blank" rel="tootltip" title="Ver Producto" class="btn btn-info btn-simple btn-sm">
+                                <a href="{{ url('products/'.$detail->product->id) }}" target="_blank" rel="tootltip" title="Ver Producto" class="btn btn-info btn-simple btn-sm">
                                     <i class="fa fa-info"></i>
                                 </a>
                                 <button type="submit" rel="tooltip" title="Eliminar" class="btn btn-danger btn-simple btn-sm">
@@ -79,7 +79,7 @@
 
                     <div class="text-center">
                         <form method="post" action="{{ url('/order') }}">
-                            {{ csrf_field() }}
+                            @csrf
                             
                             <button class="btn btn-primary btn-round">
                                 <i class="material-icons">done</i> Realizar pedido

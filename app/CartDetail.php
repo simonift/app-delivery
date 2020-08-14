@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class CartDetail extends Model
 {
-    	// CartDetail N   <->    1 Product
+        // Un producto se asocia con varios Pedidos
         public function product()
         {
-            return $this->belongsTo(Product::class); // un producto se asocia con varios cartdetail
+            return $this->belongsTo(Product::class); 
         }
 }

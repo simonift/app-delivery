@@ -3,29 +3,59 @@
 @section('body-class', 'profile-page')
 
 @section('styles')
-    <style>
-        .team {
-            padding-bottom: 50px;
-        }
+<style>
         .team .row .col-md-4 {
-            margin-bottom: 5em;
+            margin-bottom: 3em;
         }
-        .team .row {
+        .row {
           display: -webkit-box;
           display: -webkit-flex;
           display: -ms-flexbox;
           display:         flex;
           flex-wrap: wrap;
         }
-        .team .row > [class*='col-'] {
+        .row > [class*='col-'] {
           display: flex;
           flex-direction: column;
         }
-        .no-margin {
-            margin: 0;
+        .tt-query {
+          -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+             -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+                  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
         }
-        .team .team-player .title {
-            margin-bottom: 0.5em;
+
+        .tt-hint {
+          color: #999
+        }
+
+        .tt-menu {    /* used to be tt-dropdown-menu in older versions */
+          width: 222px;
+          margin-top: 2px;
+          padding: 4px 0;
+          background-color: #fff;
+          border: 1px solid #ccc;
+          border: 1px solid rgba(0, 0, 0, 0.2);
+          -webkit-border-radius: 4px;
+             -moz-border-radius: 4px;
+                  border-radius: 4px;
+          -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+             -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+                  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+        }
+
+        .tt-suggestion {
+          padding: 3px 20px;
+          line-height: 24px;
+        }
+
+        .tt-suggestion.tt-cursor,.tt-suggestion:hover {
+          color: #fff;
+          background-color: #0097cf;
+
+        }
+
+        .tt-suggestion p {
+          margin: 0;
         }
     </style>
 @endsection
@@ -38,21 +68,22 @@
     <div class="profile-content">
         <div class="container">
             <div class="row">
-                <div class="profile">
-                    <div class="avatar">
-                        <img src="{{ $category->featured_image_url }}" alt="Imagen representativa de la categoría {{ $category->name }}" class="img-circle img-responsive img-raised">
-                    </div>
-
-                    <div class="name">
-                        <h3 class="title">{{ $category->name }}</h3>
-                    </div>
-
-                    
-                    @if (session('notification'))
-                        <div class="alert alert-success">
-                            {{ session('notification') }}
+                <div class="col-md-6 ml-auto mr-auto">
+                    <div class="profile">
+                        <div class="avatar">
+                            <img src="{{ $category->featured_image_url }}" alt="Imagen representativa de la categoría {{ $category->name }}" class="img-raised rounded-circle img-fluid">
                         </div>
-                    @endif
+
+                        <div class="name">
+                            <h3 class="title">{{ $category->name }}</h3>
+                        </div>
+
+                        @if (session('notification'))
+                            <div class="alert alert-success">
+                                {{ session('notification') }}
+                            </div>
+                        @endif
+                    </div>
                 </div>
             </div>
             <div class="description text-center">
@@ -62,14 +93,20 @@
             <div class="team text-center">
                 <div class="row">
                     @foreach ($products as $product)
-                    <div class="col-md-4">
-                        <div class="team-player">
-                            <img src="{{ $product->featured_image_url }}" alt="Thumbnail Image" class="img-raised img-circle">
-                            <h4 class="title">
-                                <a href="{{ url('/products/'.$product->id) }}">{{ $product->name }}</a>
-                            </h4>
-                            <p class="no-margin">$ {{ $product->price }}</p>
-                            <p class="description">{{ $product->description }}</p>
+                    <div class="col-md-6">
+                        <div class="card team-player">
+                            <div class="card card-plain">
+                                <div class="col-md-6 ml-auto mr-auto">
+                                    <img src="{{ $product->featured_image_url }}" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
+                                    <h4 class="title">
+                                        <a href="{{ url('/products/'.$product->id) }}">{{ $product->name }}</a>
+                                    </h4>
+                                    <br>
+                                    <small class="text-muted">{{ $product->category_name }}</small>
+                                    <p class="no-margin">$ {{ $product->price }}</p>
+                                    <p class="description">{{ $product->description }}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     @endforeach
@@ -91,7 +128,7 @@
         <h4 class="modal-title" id="myModalLabel">Seleccione la cantidad que desea agregar</h4>
       </div>
       <form method="post" action="{{ url('/cart') }}">
-        {{ csrf_field() }}
+        @csrf
         <input type="hidden" name="product_id" value="{{ $product->id }}">
         <div class="modal-body">
             <input type="number" name="quantity" value="1" class="form-control">

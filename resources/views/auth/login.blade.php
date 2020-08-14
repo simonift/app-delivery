@@ -48,27 +48,15 @@
                   <input placeholder="Contraseña" id="password" type="password" class="form-control" name="password" required />
               </div>
 
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="material-icons">mail</i>
-                  </span>
-                </div>
-                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Correo electrónico..." name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-              </div>
-
               <div class="checkbox">
-                      <label>
-                          <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
-                          Recordar sesión
-                      </label>
-                  </div>
+                <label>
+                    <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
+                    Recordar sesión
+                </label>
               </div>
-              <div class="footer text-center">
-                  <button type="submit" class="btn btn-simple btn-primary btn-lg">Ingresar</button>
-              </div>
-            <div class="footer text-center">
-              <button type="submit" class="btn btn-primary btn-link btn-wd btn-lg">Ingresar</a>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-simple btn-primary btn-lg">Ingresar</a>
                 <!--
                 <a class="btn btn-link" href="{{ route('password.request') }}">
                     {{ __('Forgot Your Password?') }}

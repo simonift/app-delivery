@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+// Para acceso administrador
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;

@@ -9,6 +9,8 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+use Illuminate\Http\Request as Req;
+
 class RegisterController extends Controller
 {
     /*
@@ -42,7 +44,7 @@ class RegisterController extends Controller
     }
 
     /**
-     * Get a validator for an incoming registration request.
+     * Consigue una validación para la solicitud de registro entrante.
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
@@ -60,7 +62,7 @@ class RegisterController extends Controller
     }
 
     /**
-     * Create a new user instance after a valid registration.
+     * Crea una nueva instancia de usuario despues que se ha validado el registro
      *
      * @param  array  $data
      * @return \App\User
@@ -69,18 +71,19 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
-            'email' => $data['email'],
+            'email' => $data['email'] ?: '',
             'password' => Hash::make($data['password']),
             'phone' => $data['phone'],
             'address' => $data['address'],
             'username' => $data['username']
+            
         ]);
     }
 
-    /*public function showRegistrationForm(Req $request)
+    public function showRegistrationForm(Req $request)
     {
         $name = $request->input('name');
         $email = $request->input('email');
         return view('auth.register')->with(compact('name', 'email'));
-    }*/
+    }
 }

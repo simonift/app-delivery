@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\CartDetail;
+// Para acceso administrador
 use App\Http\Controllers\Controller;
 
 use App\ProductImage;
@@ -50,7 +51,7 @@ class ProductController extends Controller
         $product->price = $request->input('price');
         $product->long_description = $request->input('long_description');
         $product->category_id = $request->category_id == 0 ? null : $request->category_id;
-        $product->save(); // INSERT
+        $product->save(); // inserción de producto
 
         return redirect('/admin/products');
     }
@@ -59,7 +60,7 @@ class ProductController extends Controller
     {
         $categories = Category::orderBy('name')->get();
         $product = Product::find($id);
-        return view('admin.products.edit')->with(compact('product', 'categories')); // form de edición
+        return view('admin.products.edit')->with(compact('product', 'categories')); // formulario de edición
     }
 
     public function update(Request $request, $id)
@@ -79,14 +80,14 @@ class ProductController extends Controller
             'price' => 'required|numeric|min:0'
         ];
         $this->validate($request, $rules, $messages);
-        // dd($request->all());
+        // dd($request->all()); //muestra todos los productos
         $product = Product::find($id);
         $product->name = $request->input('name');
         $product->description = $request->input('description');
         $product->price = $request->input('price');
         $product->long_description = $request->input('long_description');
         $product->category_id = $request->category_id == 0 ? null : $request->category_id;
-        $product->save(); // UPDATE
+        $product->save(); // actualización de producto
 
         return redirect('/admin/products');
     }
@@ -97,7 +98,7 @@ class ProductController extends Controller
         ProductImage::where('product_id', $id)->delete();
 
         $product = Product::find($id);
-        $product->delete(); // DELETE
+        $product->delete(); // eliminación de producto
 
         return back();
     }

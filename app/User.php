@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'phone', 'address', 'username',
+        'name', 'email', 'password', 'phone', 'address', 'username'
     ];
 
     /**
@@ -35,21 +35,22 @@ class User extends Authenticatable
      *
      * @var array
      */
-
+    // Nos devuelve todos los carritos asociados al usuario (Incluyendo pedido)
     public function carts(){
         return $this->hasMany(Cart::class);
     }
     
-    // cart_id
+    // cart_id Metodo de acceso
     public function getCartAttribute(){
-        $cart = $this->carts()->where('status','Active')->first();
+        // Selecciona el carrito con estado = Activo
+        $cart = $this->carts()->where('status', 'Active')->first();
         if($cart)
             return $cart;
 
-        //else
+        //Else se crea un carrito de compras activo
         $cart = new Cart();
         $cart->status = 'Active';
-        $cart->user_id = $this->id;
+        $cart->user_id = $this->id; // id del usuario
         $cart->save();
 
         return $cart;

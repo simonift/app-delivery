@@ -18,7 +18,7 @@ class CreateCartsTable extends Migration
 
             $table->date('orden_date')->nullable();
             $table->date('arrived_date')->nullable();
-            $table->string('status'); // Active, Pending, Approved, Cancelled, Finished
+            $table->string('status'); // Active(Carrito de Compras), Oredenes -> Pending, Approved, Cancelled, Finished
 
             // user_id (FK)
             $table->unsignedBigInteger('user_id');
@@ -26,6 +26,7 @@ class CreateCartsTable extends Migration
             
             $table->timestamps();
         });
+        
     }
 
     /**

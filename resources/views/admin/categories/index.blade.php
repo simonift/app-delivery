@@ -32,9 +32,9 @@
                                 <td>{{ $category->name }}</td>
                                 <td>{{ $category->description }}</td>
                                 <td>
-                                    <img src="{{ $category->featured_image_url }}" height="50">
+                                    <img src="{{ $category->featured_image_url }}" height="50" width="50">
                                 </td>
-                                <td class="td-actions text-right">
+                                <td class="td-actions text-center">
                                     <form method="post" action="{{ url('/admin/categories/'.$category->id) }}">
                                         @csrf
                                         @method('DELETE')

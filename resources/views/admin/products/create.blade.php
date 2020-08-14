@@ -32,7 +32,10 @@
                               <input type="text" class="form-control" name="name" value="{{ old('name') }}">
                             </div>
                         </div>
-
+                        <div class="col-sm-6">
+                            <label class="control-label">Imagen de la categoría</label>
+                            <input type="file" name="image">
+                        </div>
                         <div class="col-sm-6">
                             <div class="form-group label-floating">
                                 <label class="control-label">Precio del producto</label>

@@ -25,7 +25,7 @@
                     </div>
                 @endif
 
-                <form method="post" action="{{ url('/admin/categories') }}">
+                <form method="post" action="{{ url('/admin/categories') }}" enctype="multipart/form-data">
                     @csrf
 
                     <div class="row">
